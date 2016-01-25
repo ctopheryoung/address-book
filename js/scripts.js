@@ -4,17 +4,29 @@ function Contact(firstName, lastName) {
   this.addresses = [];
 }
 
+Contact.prototype.fullName = function() {
+  return this.firstName + " " + this.lastName;
+}
+
 $(document).ready(function() {
   $("form#new-contact").submit(function(event) {
     event.preventDefault();
+    debugger;
 
     var addedFirstName = $("input#new-first-name").val();
     var addedLastName = $("input#new-last-name").val();
-    var newContacts = new Contact(addedFirstName, addedLastName);
+    var newContact = new Contact(addedFirstName, addedLastName);
 
-    $("ul#contacts").append("<li><span class='contact'>") + newContacts.fullName() + ("</span></li>");
+    $("ul#contacts").append(("<li><span class='contact'>") + newContact.fullName() + ("</span></li>"));
 
-    $("input#new-first-name").val("");
-    $("input#new-last-name").val("");
-  })
-})
+    // $("input#new-first-name").val("");
+    // $("input#new-last-name").val("");
+
+    // $(".contact").last().click(function() {
+    //   $("#show-contact").show();
+    //   $("#show-contact h2").text(newContact.fullName());
+    //   $(".first-name").text(newContact.firstName);
+    //   $(".last-name").text(newContact.lastName);
+    // });
+  });
+});
