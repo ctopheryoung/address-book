@@ -11,7 +11,6 @@ Contact.prototype.fullName = function() {
 $(document).ready(function() {
   $("form#new-contact").submit(function(event) {
     event.preventDefault();
-    debugger;
 
     var addedFirstName = $("input#new-first-name").val();
     var addedLastName = $("input#new-last-name").val();
@@ -19,14 +18,14 @@ $(document).ready(function() {
 
     $("ul#contacts").append(("<li><span class='contact'>") + newContact.fullName() + ("</span></li>"));
 
-    // $("input#new-first-name").val("");
-    // $("input#new-last-name").val("");
+    $("input#new-first-name").val("");
+    $("input#new-last-name").val("");
 
-    // $(".contact").last().click(function() {
-    //   $("#show-contact").show();
-    //   $("#show-contact h2").text(newContact.fullName());
-    //   $(".first-name").text(newContact.firstName);
-    //   $(".last-name").text(newContact.lastName);
-    // });
+    $(".contact").last().click(function() {
+      $("#show-contact").show();
+      $("#show-contact h2").text(newContact.fullName());
+      $(".first-name").text(newContact.firstName);
+      $(".last-name").text(newContact.lastName);
+    });
   });
 });
